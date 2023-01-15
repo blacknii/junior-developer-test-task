@@ -4,7 +4,7 @@ import Header from "./components/header/Header";
 import ProductAdd from "./components/productAdd/ProductAdd";
 import Tasks from "./components/tasks/Tasks";
 
-const test = false;
+const test = true;
 function App() {
   return (
     <div className={styles.container}>

@@ -3,7 +3,7 @@ import styles from "./ProductAdd.module.css";
 
 function ProductAdd() {
   return (
-    <div className={styles[""]}>
+    <div className={styles["container"]}>
       <form>
         <label for="fname">SKU</label>
         <input type="text" />
