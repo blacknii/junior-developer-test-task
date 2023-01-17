@@ -16,16 +16,6 @@ function Tasks() {
       <Task />
       <Task />
       <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
     </div>
   );
 }
