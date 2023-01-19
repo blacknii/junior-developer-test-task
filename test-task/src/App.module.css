@@ -3,5 +3,6 @@
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;
   gap: 1rem;
-  margin: 0 20rem;
+  width: 78rem;
+  margin: 0 auto;
 }
