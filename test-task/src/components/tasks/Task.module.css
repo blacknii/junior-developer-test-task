@@ -3,9 +3,15 @@
   height: 10rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  padding: 1rem 2rem;
+  box-sizing: content-box;
+  padding: 1rem 1rem 0rem 1rem;
   /* margin: 1rem; */
   border: solid;
+}
+
+.checkbox {
+  text-align: left;
+  width: 100%;
 }
