@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../UI/Button";
 import styles from "./Header.module.css";
 
 function Header(props) {
@@ -14,12 +15,12 @@ function Header(props) {
       <h1>Product List</h1>
       <div className={styles.buttons}>
         {AddProductVisible && (
-          <button onClick={addProductActivatorActivator}>ADD</button>
+          <Button onClick={addProductActivatorActivator}>ADD</Button>
         )}
-        {AddProductVisible && <button>MASS DELETE</button>}
-        {!AddProductVisible && <button>Save</button>}
+        {AddProductVisible && <Button>MASS DELETE</Button>}
+        {!AddProductVisible && <Button>Save</Button>}
         {!AddProductVisible && (
-          <button onClick={addProductActivatorActivator}>Cancel</button>
+          <Button onClick={addProductActivatorActivator}>Cancel</Button>
         )}
       </div>
     </div>
