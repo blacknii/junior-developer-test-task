@@ -11,7 +11,16 @@ function ProductAdd() {
       <input type="number" />{" "}
     </div>
   );
+
   const weight = (
+    <div>
+      {" "}
+      <label for="fname">Weight (KG)</label>
+      <input type="number" />{" "}
+    </div>
+  );
+
+  const dimensions = (
     <div>
       {" "}
       <label for="fname">Size (CM)</label>
@@ -21,13 +30,6 @@ function ProductAdd() {
       <input type="number" />
       <br />
       <label for="fname">Lenght (CM)</label>
-      <input type="number" />{" "}
-    </div>
-  );
-  const dimensions = (
-    <div>
-      {" "}
-      <label for="fname">Weight (KG)</label>
       <input type="number" />{" "}
     </div>
   );

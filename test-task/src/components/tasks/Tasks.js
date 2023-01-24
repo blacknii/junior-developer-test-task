@@ -12,7 +12,8 @@ function Tasks(props) {
             sku={element.SKU}
             name={element.Name}
             price={element.Price}
-            size={element.Size}
+            type={element.Type}
+            amount={element.Amount}
           />
         );
       })}
