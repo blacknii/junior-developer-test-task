@@ -12,6 +12,7 @@ const DUMMY_DATA = [
     Price: "1.00 $",
     Type: "size",
     Amount: "750",
+    Ischecked: false,
   },
   {
     SKU: "JVC25323",
@@ -19,6 +20,7 @@ const DUMMY_DATA = [
     Price: "5.00 $",
     Type: "size",
     Amount: "1700",
+    Ischecked: false,
   },
   {
     SKU: "JVC2342343",
@@ -26,6 +28,7 @@ const DUMMY_DATA = [
     Price: "110.00 $",
     Type: "weight",
     Amount: "3",
+    Ischecked: false,
   },
   {
     SKU: "JVC523223",
@@ -33,6 +36,7 @@ const DUMMY_DATA = [
     Price: "21.00 $",
     Type: "weight",
     Amount: "7",
+    Ischecked: false,
   },
   {
     SKU: "JVC2033",
@@ -40,20 +44,37 @@ const DUMMY_DATA = [
     Price: "12.00 $",
     Type: "dimensions",
     Amount: "24x45x15",
+    Ischecked: false,
   },
 ];
 
 function App() {
+  const [protucts, setProtucts] = useState(DUMMY_DATA);
+
   const [AddProductVisible, setAddProductVisible] = useState(true);
 
   const addProductActivator = () => {
     setAddProductVisible(!AddProductVisible);
   };
 
+  const addProductSaveActivator = () => {
+    console.log("SAVE Test");
+    // setAddProductVisible(!AddProductVisible);
+  };
+
+  const delateProductActivator = () => {
+    console.log("Delete Test");
+    setProtucts(protucts.filter((product) => !product.Ischecked));
+  };
+
   return (
     <div className={styles.container}>
-      <Header addProductActivator={addProductActivator} />
-      {AddProductVisible && <Tasks products={DUMMY_DATA} />}
+      <Header
+        addProductActivator={addProductActivator}
+        addProductSaveActivator={addProductSaveActivator}
+        delateProductActivator={delateProductActivator}
+      />
+      {AddProductVisible && <Tasks products={protucts} />}
       {!AddProductVisible && <ProductAdd />}
       <Footer />
     </div>
