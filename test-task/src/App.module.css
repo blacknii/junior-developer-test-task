@@ -6,3 +6,14 @@
   width: 78rem;
   margin: 0 auto;
 }
+
+@media only screen and (max-width: 80rem) {
+  .container {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    width: auto;
+    margin: 0 1rem;
+  }
+}
