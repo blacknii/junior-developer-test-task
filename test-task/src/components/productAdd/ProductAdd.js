@@ -76,16 +76,16 @@ function ProductAdd() {
   return (
     <div className={styles["container"]}>
       <form>
-        <label for="fname">SKU</label>
+        <label for="fname">SKU </label>
         <input type="text" />
         <br />
-        <label for="fname">Name</label>
+        <label for="fname">Name </label>
         <input type="text" />
         <br />
-        <label for="fname">Price ($)</label>
+        <label for="fname">Price ($) </label>
         <input type="number" />
         <br />
-        <label for="fname">Type Switcher</label>
+        <label for="fname">Type Switcher </label>
         <select name="select" id="pet-select" onChange={typeSwitcher}>
           <option value="empty"></option>
           <option value="size">Size (in MB) for DVD-disc</option>
