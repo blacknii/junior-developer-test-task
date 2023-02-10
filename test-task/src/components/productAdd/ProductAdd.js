@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment, incrementByAmount } from "../../redux/counter";
+import Button from "../UI/Button";
 import styles from "./ProductAdd.module.css";
 
 function ProductAdd() {
@@ -73,6 +76,9 @@ function ProductAdd() {
     }
   };
 
+  const { value } = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
+
   return (
     <div className={styles["container"]}>
       <form>
@@ -94,6 +100,12 @@ function ProductAdd() {
         </select>
         {selectedOption}
       </form>
+      <h3> The count is: {value}</h3>
+      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
+      <button onClick={() => dispatch(incrementByAmount(33))}>
+        increment by 33
+      </button>
     </div>
   );
 }
