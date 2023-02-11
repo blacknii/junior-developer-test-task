@@ -14,6 +14,12 @@ function Header(props) {
     props.delateProductActivator();
   };
 
+  const productAdd = () => {
+    props.addProductSaveActivator();
+    props.addProductActivator();
+    setAddProductVisible(!AddProductVisible);
+  };
+
   return (
     <div className={styles.container}>
       <h1>Product List</h1>
@@ -24,9 +30,7 @@ function Header(props) {
         {AddProductVisible && (
           <Button onClick={delateProductActivatorActivator}>MASS DELETE</Button>
         )}
-        {!AddProductVisible && (
-          <Button onClick={addProductActivatorActivator}>Save</Button>
-        )}
+        {!AddProductVisible && <Button onClick={productAdd}>Save</Button>}
         {!AddProductVisible && (
           <Button onClick={addProductActivatorActivator}>Cancel</Button>
         )}

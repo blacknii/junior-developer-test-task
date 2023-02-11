@@ -14,6 +14,7 @@ function Tasks(props) {
             price={element.Price}
             type={element.Type}
             amount={element.Amount}
+            key={element.SKU}
           />
         );
       })}

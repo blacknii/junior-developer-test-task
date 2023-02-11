@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, incrementByAmount } from "../../redux/counter";
-import Button from "../UI/Button";
+import { arrAddZero, arrAddOne, arrRemove } from "../../redux/arrEditor";
 import styles from "./ProductAdd.module.css";
 
 function ProductAdd() {
@@ -79,6 +79,8 @@ function ProductAdd() {
   const { value } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
 
+  const { arr } = useSelector((state) => state.arrEditor);
+
   return (
     <div className={styles["container"]}>
       <form>
@@ -106,6 +108,12 @@ function ProductAdd() {
       <button onClick={() => dispatch(incrementByAmount(33))}>
         increment by 33
       </button>
+      {arr.map((element) => {
+        return <p>{element}</p>;
+      })}
+      <button onClick={() => dispatch(arrAddZero())}>ZERO</button>
+      <button onClick={() => dispatch(arrAddOne())}>ONE</button>
+      <button onClick={() => dispatch(arrRemove(2))}>REMOVE 2</button>
     </div>
   );
 }
