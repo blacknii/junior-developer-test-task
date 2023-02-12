@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment, incrementByAmount } from "../../redux/counter";
-import { arrAddZero, arrAddOne, arrRemove } from "../../redux/arrEditor";
 import styles from "./ProductAdd.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { testPrint, dateUpdater } from "../../redux/newProduct";
 
 function ProductAdd() {
   const [option, setOption] = useState(0);
@@ -76,16 +75,19 @@ function ProductAdd() {
     }
   };
 
-  const { value } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
 
-  const { arr } = useSelector((state) => state.arrEditor);
+  const onTypeTest = (event) => {
+    // console.log(event.target.value);
+    dispatch(dateUpdater(event.target.value));
+    dispatch(testPrint());
+  };
 
   return (
     <div className={styles["container"]}>
       <form>
         <label for="fname">SKU </label>
-        <input type="text" />
+        <input type="text" onChange={onTypeTest} />
         <br />
         <label for="fname">Name </label>
         <input type="text" />
@@ -102,18 +104,6 @@ function ProductAdd() {
         </select>
         {selectedOption}
       </form>
-      <h3> The count is: {value}</h3>
-      <button onClick={() => dispatch(increment())}>+</button>
-      <button onClick={() => dispatch(decrement())}>-</button>
-      <button onClick={() => dispatch(incrementByAmount(33))}>
-        increment by 33
-      </button>
-      {arr.map((element) => {
-        return <p>{element}</p>;
-      })}
-      <button onClick={() => dispatch(arrAddZero())}>ZERO</button>
-      <button onClick={() => dispatch(arrAddOne())}>ONE</button>
-      <button onClick={() => dispatch(arrRemove(2))}>REMOVE 2</button>
     </div>
   );
 }

@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./counter";
-import arrEditorReducer from "./arrEditor";
 import productsEditorReducer from "./productsEditor";
+import newProductReducer from "./newProduct";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    arrEditor: arrEditorReducer,
     productsEditor: productsEditorReducer,
+    newProduct: newProductReducer,
   },
 });

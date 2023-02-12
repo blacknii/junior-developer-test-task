@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addX, addY, arrRemoveAmount } from "./redux/productsEditor";
+import { testPrint, dateUpdater } from "./redux/newProduct";
 import styles from "./App.module.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
@@ -19,12 +20,13 @@ function App() {
 
   const addProductSaveActivator = () => {
     console.log("SAVE Test");
-    dispatch(addX());
+    dispatch(testPrint());
   };
 
   const delateProductActivator = () => {
     console.log("Delete Test");
     dispatch(arrRemoveAmount(1));
+    dispatch(testPrint());
   };
 
   return (
