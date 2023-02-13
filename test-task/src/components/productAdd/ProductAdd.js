@@ -1,16 +1,41 @@
 import React, { useState } from "react";
 import styles from "./ProductAdd.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { testPrint, dateUpdater } from "../../redux/newProduct";
+import {
+  testPrint,
+  SKUUpdater,
+  nameUpdater,
+  priceUpdater,
+  typeUpdater,
+  sizeUpdater,
+} from "../../redux/newProduct";
 
 function ProductAdd() {
   const [option, setOption] = useState(0);
+
+  const dispatch = useDispatch();
+
+  const SKUTest = (event) => {
+    dispatch(SKUUpdater(event.target.value));
+  };
+
+  const nameTest = (event) => {
+    dispatch(nameUpdater(event.target.value));
+  };
+
+  const priceTest = (event) => {
+    dispatch(priceUpdater(event.target.value));
+  };
+
+  const sizeTest = (event) => {
+    dispatch(sizeUpdater(event.target.value));
+  };
 
   const size = (
     <div>
       {" "}
       <label for="fname">Size (MB)</label>
-      <input type="number" />{" "}
+      <input type="number" onChange={sizeTest} />{" "}
     </div>
   );
 
@@ -18,7 +43,7 @@ function ProductAdd() {
     <div>
       {" "}
       <label for="fname">Weight (KG)</label>
-      <input type="number" />{" "}
+      <input type="number" onChange={sizeTest} />{" "}
     </div>
   );
 
@@ -57,6 +82,7 @@ function ProductAdd() {
 
   const typeSwitcher = (e) => {
     console.log(e.target.value);
+    dispatch(typeUpdater(e.target.value));
     switch (e.target.value) {
       case "empty":
         setOption(0);
@@ -75,25 +101,17 @@ function ProductAdd() {
     }
   };
 
-  const dispatch = useDispatch();
-
-  const onTypeTest = (event) => {
-    // console.log(event.target.value);
-    dispatch(dateUpdater(event.target.value));
-    dispatch(testPrint());
-  };
-
   return (
     <div className={styles["container"]}>
       <form>
         <label for="fname">SKU </label>
-        <input type="text" onChange={onTypeTest} />
+        <input type="text" onChange={SKUTest} />
         <br />
         <label for="fname">Name </label>
-        <input type="text" />
+        <input type="text" onChange={nameTest} />
         <br />
         <label for="fname">Price ($) </label>
-        <input type="number" />
+        <input type="number" onChange={priceTest} />
         <br />
         <label for="fname">Type Switcher </label>
         <select name="select" id="pet-select" onChange={typeSwitcher}>
