@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./ProductAdd.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  testPrint,
   SKUUpdater,
   nameUpdater,
   priceUpdater,
