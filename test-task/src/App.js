@@ -30,7 +30,7 @@ function App() {
         addX({
           SKU: addingProduct.SKU,
           Name: addingProduct.Name,
-          Price: addingProduct.Price,
+          Price: addingProduct.Price + " $",
           Type: addingProduct.Type,
           Amount:
             addingProduct.AmountPrototype[0] +
