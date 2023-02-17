@@ -22,8 +22,26 @@ function App() {
   const addProductSaveActivator = () => {
     console.log("SAVE Test");
     dispatch(testPrint());
-    dispatch(size2Updater());
-    dispatch(addX(addingProduct));
+    if (addingProduct.Type !== "dimensions") {
+      dispatch(addX(addingProduct));
+    } else {
+      console.log("WORKS");
+      dispatch(
+        addX({
+          SKU: addingProduct.SKU,
+          Name: addingProduct.Name,
+          Price: addingProduct.Price,
+          Type: addingProduct.Type,
+          Amount:
+            addingProduct.AmountPrototype[0] +
+            "x" +
+            addingProduct.AmountPrototype[1] +
+            "x" +
+            addingProduct.AmountPrototype[2],
+          Ischecked: false,
+        })
+      );
+    }
   };
 
   const delateProductActivator = () => {

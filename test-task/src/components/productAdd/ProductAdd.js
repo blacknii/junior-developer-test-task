@@ -7,11 +7,12 @@ import {
   priceUpdater,
   typeUpdater,
   sizeUpdater,
+  sizePrototypeUpdater,
 } from "../../redux/newProduct";
 
 function ProductAdd() {
   const [option, setOption] = useState(0);
-  const [dimentions, setdimentions] = useState(["", "", ""]);
+  const [dimentions, setDimentions] = useState(["", "", ""]);
 
   const dispatch = useDispatch();
 
@@ -31,29 +32,25 @@ function ProductAdd() {
     dispatch(sizeUpdater(event.target.value));
   };
 
-  const dimentionsTest = () => {
-    dispatch(sizeUpdater(dimentions));
-  };
-
   const size2Test = (event) => {
     const newDimentions = [...dimentions]; // create a copy of the array
     newDimentions[0] = event.target.value; // change the desired element
-    setdimentions(newDimentions); // update the state with the new array
-    dimentionsTest();
+    setDimentions(newDimentions); // update the state with the new array
+    dispatch(sizePrototypeUpdater(dimentions));
   };
 
   const widthTest = (event) => {
     const newDimentions = [...dimentions]; // create a copy of the array
     newDimentions[1] = event.target.value; // change the desired element
-    setdimentions(newDimentions); // update the state with the new array
-    dimentionsTest();
+    setDimentions(newDimentions); // update the state with the new array
+    dispatch(sizePrototypeUpdater(dimentions));
   };
 
   const lenghtTest = (event) => {
     const newDimentions = [...dimentions]; // create a copy of the array
     newDimentions[2] = event.target.value; // change the desired element
-    setdimentions(newDimentions); // update the state with the new array
-    dimentionsTest();
+    setDimentions(newDimentions); // update the state with the new array
+    dispatch(sizePrototypeUpdater(dimentions));
   };
 
   const size = (

@@ -6,6 +6,7 @@ const initialState = {
     Name: "",
     Price: "",
     Type: "",
+    AmountPrototype: ["", "", ""],
     Amount: "",
     Ischecked: false,
   },
@@ -29,9 +30,9 @@ export const newProductSlice = createSlice({
         console.log(state.addingProduct.Name);
         console.log(state.addingProduct.Price);
         console.log(state.addingProduct.Type);
-        console.log(state.addingProduct.Amount[0]);
-        console.log(state.addingProduct.Amount[1]);
-        console.log(state.addingProduct.Amount[2]);
+        console.log(state.addingProduct.AmountPrototype[0]);
+        console.log(state.addingProduct.AmountPrototype[1]);
+        console.log(state.addingProduct.AmountPrototype[2]);
       }
     },
     size2Updater: (state) => {
@@ -63,6 +64,9 @@ export const newProductSlice = createSlice({
     sizeUpdater: (state, action) => {
       state.addingProduct.Amount = action.payload;
     },
+    sizePrototypeUpdater: (state, action) => {
+      state.addingProduct.AmountPrototype = action.payload;
+    },
   },
 });
 
@@ -75,6 +79,7 @@ export const {
   priceUpdater,
   typeUpdater,
   sizeUpdater,
+  sizePrototypeUpdater,
 } = newProductSlice.actions;
 
 export default newProductSlice.reducer;
