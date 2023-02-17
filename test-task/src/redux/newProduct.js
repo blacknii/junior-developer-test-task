@@ -65,7 +65,10 @@ export const newProductSlice = createSlice({
       state.addingProduct.Amount = action.payload;
     },
     sizePrototypeUpdater: (state, action) => {
-      state.addingProduct.AmountPrototype = action.payload;
+      const newDimentions = [...state.addingProduct.AmountPrototype]; // create a copy of the array
+      console.log(newDimentions);
+      newDimentions[action.payload[1]] = action.payload[0]; // change the desired element
+      state.addingProduct.AmountPrototype = newDimentions;
     },
   },
 });

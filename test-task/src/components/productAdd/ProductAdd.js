@@ -12,7 +12,6 @@ import {
 
 function ProductAdd() {
   const [option, setOption] = useState(0);
-  const [dimentions, setDimentions] = useState(["", "", ""]);
 
   const dispatch = useDispatch();
 
@@ -33,24 +32,15 @@ function ProductAdd() {
   };
 
   const size2Test = (event) => {
-    const newDimentions = [...dimentions]; // create a copy of the array
-    newDimentions[0] = event.target.value; // change the desired element
-    setDimentions(newDimentions); // update the state with the new array
-    dispatch(sizePrototypeUpdater(dimentions));
+    dispatch(sizePrototypeUpdater([event.target.value, 0]));
   };
 
   const widthTest = (event) => {
-    const newDimentions = [...dimentions]; // create a copy of the array
-    newDimentions[1] = event.target.value; // change the desired element
-    setDimentions(newDimentions); // update the state with the new array
-    dispatch(sizePrototypeUpdater(dimentions));
+    dispatch(sizePrototypeUpdater([event.target.value, 1]));
   };
 
   const lenghtTest = (event) => {
-    const newDimentions = [...dimentions]; // create a copy of the array
-    newDimentions[2] = event.target.value; // change the desired element
-    setDimentions(newDimentions); // update the state with the new array
-    dispatch(sizePrototypeUpdater(dimentions));
+    dispatch(sizePrototypeUpdater([event.target.value, 2]));
   };
 
   const size = (
