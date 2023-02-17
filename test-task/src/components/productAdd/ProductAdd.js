@@ -11,6 +11,7 @@ import {
 
 function ProductAdd() {
   const [option, setOption] = useState(0);
+  const [dimentions, setdimentions] = useState(["", "", ""]);
 
   const dispatch = useDispatch();
 
@@ -28,6 +29,31 @@ function ProductAdd() {
 
   const sizeTest = (event) => {
     dispatch(sizeUpdater(event.target.value));
+  };
+
+  const dimentionsTest = () => {
+    dispatch(sizeUpdater(dimentions));
+  };
+
+  const size2Test = (event) => {
+    const newDimentions = [...dimentions]; // create a copy of the array
+    newDimentions[0] = event.target.value; // change the desired element
+    setdimentions(newDimentions); // update the state with the new array
+    dimentionsTest();
+  };
+
+  const widthTest = (event) => {
+    const newDimentions = [...dimentions]; // create a copy of the array
+    newDimentions[1] = event.target.value; // change the desired element
+    setdimentions(newDimentions); // update the state with the new array
+    dimentionsTest();
+  };
+
+  const lenghtTest = (event) => {
+    const newDimentions = [...dimentions]; // create a copy of the array
+    newDimentions[2] = event.target.value; // change the desired element
+    setdimentions(newDimentions); // update the state with the new array
+    dimentionsTest();
   };
 
   const size = (
@@ -50,13 +76,13 @@ function ProductAdd() {
     <div>
       {" "}
       <label for="fname">Size (CM)</label>
-      <input type="number" />
+      <input type="number" onChange={size2Test} />
       <br />
       <label for="fname">Width (CM)</label>
-      <input type="number" />
+      <input type="number" onChange={widthTest} />
       <br />
       <label for="fname">Lenght (CM)</label>
-      <input type="number" />{" "}
+      <input type="number" onChange={lenghtTest} />{" "}
     </div>
   );
 

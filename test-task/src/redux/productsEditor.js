@@ -51,15 +51,8 @@ export const productsEditorSlice = createSlice({
   name: "productsEditor",
   initialState,
   reducers: {
-    addX: (state) => {
-      state.protucts.push({
-        SKU: Math.floor(Math.random() * 100000),
-        Name: "Acrne DISC",
-        Price: "1.00 $",
-        Type: "size",
-        Amount: "750",
-        Ischecked: false,
-      });
+    addX: (state, action) => {
+      state.protucts.push(action.payload);
     },
     addY: (state) => {
       state.protucts.push("zero");

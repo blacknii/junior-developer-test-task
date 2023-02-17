@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addX, addY, arrRemoveAmount } from "./redux/productsEditor";
-import { testPrint, dateUpdater } from "./redux/newProduct";
+import { testPrint, dateUpdater, size2Updater } from "./redux/newProduct";
 import styles from "./App.module.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
@@ -10,6 +10,7 @@ import Tasks from "./components/tasks/Tasks";
 
 function App() {
   const { protucts } = useSelector((state) => state.productsEditor);
+  const { addingProduct } = useSelector((state) => state.newProduct);
   const dispatch = useDispatch();
 
   const [AddProductVisible, setAddProductVisible] = useState(true);
@@ -21,6 +22,8 @@ function App() {
   const addProductSaveActivator = () => {
     console.log("SAVE Test");
     dispatch(testPrint());
+    dispatch(size2Updater());
+    dispatch(addX(addingProduct));
   };
 
   const delateProductActivator = () => {
