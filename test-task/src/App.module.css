@@ -7,6 +7,14 @@
   margin: 0 auto;
 }
 
+.empty-list {
+  margin-top: 30vh;
+  margin-bottom: 30vh;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 @media only screen and (max-width: 80rem) {
   .container {
     display: grid;

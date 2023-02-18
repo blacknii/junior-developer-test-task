@@ -13,6 +13,7 @@ function Tasks(props) {
             price={element.Price}
             type={element.Type}
             amount={element.Amount}
+            isChecked={element.Ischecked}
             key={element.SKU}
           />
         );

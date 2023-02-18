@@ -46,8 +46,7 @@ function App() {
 
   const delateProductActivator = () => {
     console.log("Delete Test");
-    dispatch(arrRemoveAmount(1));
-    dispatch(testPrint());
+    dispatch(arrRemoveAmount());
   };
 
   return (
@@ -57,6 +56,9 @@ function App() {
         addProductSaveActivator={addProductSaveActivator}
         delateProductActivator={delateProductActivator}
       />
+      {protucts.length === 0 && AddProductVisible && (
+        <p className={styles["empty-list"]}> Product list is empty </p>
+      )}
       {AddProductVisible && <Tasks products={protucts} />}
       {!AddProductVisible && <ProductAdd />}
       <Footer />

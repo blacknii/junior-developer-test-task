@@ -57,15 +57,22 @@ export const productsEditorSlice = createSlice({
     addY: (state) => {
       state.protucts.push("zero");
     },
-    arrRemoveAmount: (state, action) => {
-      for (let index = 0; index < action.payload; index++) {
-        state.protucts.pop();
-      }
+    arrRemoveAmount: (state) => {
+      state.protucts = state.protucts.filter((task) => !task.Ischecked);
+    },
+    arrCheker: (state, action) => {
+      state.protucts = state.protucts.map((task) => {
+        if (task.SKU === action.payload) {
+          task.Ischecked = !task.Ischecked;
+        }
+        return task;
+      });
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addX, addY, arrRemoveAmount } = productsEditorSlice.actions;
+export const { addX, addY, arrRemoveAmount, arrCheker } =
+  productsEditorSlice.actions;
 
 export default productsEditorSlice.reducer;
