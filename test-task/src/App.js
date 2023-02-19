@@ -13,7 +13,24 @@ function App() {
   const { addingProduct } = useSelector((state) => state.newProduct);
   const dispatch = useDispatch();
 
-  const isDataValid = addingProduct.SKU !== "";
+  const isSKUValid = protucts.every((p) => {
+    return p.SKU !== addingProduct.SKU;
+  });
+
+  const isAmountPrototypeValid =
+    addingProduct.Type === "dimensions" &&
+    addingProduct.AmountPrototype[0] !== "" &&
+    addingProduct.AmountPrototype[1] !== "" &&
+    addingProduct.AmountPrototype[2] !== "";
+
+  const isDataValid =
+    addingProduct.SKU !== "" &&
+    isSKUValid &&
+    addingProduct.Name !== "" &&
+    addingProduct.Price !== "" &&
+    addingProduct.Type !== "" &&
+    (isAmountPrototypeValid ||
+      (addingProduct.Type !== "dimensions" && addingProduct.Amount !== ""));
 
   const addingProductDimensions = {
     SKU: addingProduct.SKU,
@@ -44,6 +61,8 @@ function App() {
         dispatch(addX(addingProductDimensions));
       }
       dispatch(reset());
+      setAddProductVisible(!AddProductVisible);
+      console.log("Data is valid");
     } else {
       console.log("Data isn't valid");
     }
@@ -60,6 +79,7 @@ function App() {
         addProductActivator={addProductActivator}
         addProductSaveActivator={addProductSaveActivator}
         delateProductActivator={delateProductActivator}
+        AddProductVisible={AddProductVisible}
       />
       {protucts.length === 0 && AddProductVisible && (
         <p className={styles["empty-list"]}> Product list is empty </p>

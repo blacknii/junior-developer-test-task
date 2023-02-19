@@ -3,11 +3,10 @@ import Button from "../UI/Button";
 import styles from "./Header.module.css";
 
 function Header(props) {
-  const [AddProductVisible, setAddProductVisible] = useState(true);
+  const AddProductVisible = props.AddProductVisible;
 
   const addProductActivatorActivator = () => {
     props.addProductActivator();
-    setAddProductVisible(!AddProductVisible);
   };
 
   const delateProductActivatorActivator = () => {
@@ -16,8 +15,6 @@ function Header(props) {
 
   const productAdd = () => {
     props.addProductSaveActivator();
-    props.addProductActivator();
-    setAddProductVisible(!AddProductVisible);
   };
 
   return (
