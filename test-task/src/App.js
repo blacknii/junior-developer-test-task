@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addX, addY, arrRemoveAmount } from "./redux/productsEditor";
-import { testPrint, dateUpdater, size2Updater } from "./redux/newProduct";
+import { reset, dateUpdater, size2Updater } from "./redux/newProduct";
 import styles from "./App.module.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
@@ -13,6 +13,22 @@ function App() {
   const { addingProduct } = useSelector((state) => state.newProduct);
   const dispatch = useDispatch();
 
+  const isDataValid = addingProduct.SKU !== "";
+
+  const addingProductDimensions = {
+    SKU: addingProduct.SKU,
+    Name: addingProduct.Name,
+    Price: addingProduct.Price + " $",
+    Type: addingProduct.Type,
+    Amount:
+      addingProduct.AmountPrototype[0] +
+      "x" +
+      addingProduct.AmountPrototype[1] +
+      "x" +
+      addingProduct.AmountPrototype[2],
+    Ischecked: false,
+  };
+
   const [AddProductVisible, setAddProductVisible] = useState(true);
 
   const addProductActivator = () => {
@@ -20,27 +36,16 @@ function App() {
   };
 
   const addProductSaveActivator = () => {
-    console.log("SAVE Test");
-    dispatch(testPrint());
-    if (addingProduct.Type !== "dimensions") {
-      dispatch(addX(addingProduct));
+    if (isDataValid) {
+      if (addingProduct.Type !== "dimensions") {
+        dispatch(addX(addingProduct));
+      } else {
+        console.log("WORKS");
+        dispatch(addX(addingProductDimensions));
+      }
+      dispatch(reset());
     } else {
-      console.log("WORKS");
-      dispatch(
-        addX({
-          SKU: addingProduct.SKU,
-          Name: addingProduct.Name,
-          Price: addingProduct.Price + " $",
-          Type: addingProduct.Type,
-          Amount:
-            addingProduct.AmountPrototype[0] +
-            "x" +
-            addingProduct.AmountPrototype[1] +
-            "x" +
-            addingProduct.AmountPrototype[2],
-          Ischecked: false,
-        })
-      );
+      console.log("Data isn't valid");
     }
   };
 

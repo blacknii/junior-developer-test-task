@@ -16,24 +16,16 @@ export const newProductSlice = createSlice({
   name: "newProduct",
   initialState,
   reducers: {
-    testPrint: (state) => {
-      if (state.addingProduct.Type !== "dimensions") {
-        console.log("--------------------------------------");
-        console.log(state.addingProduct.SKU);
-        console.log(state.addingProduct.Name);
-        console.log(state.addingProduct.Price);
-        console.log(state.addingProduct.Type);
-        console.log(state.addingProduct.Amount);
-      } else {
-        console.log("--------------------------------------");
-        console.log(state.addingProduct.SKU);
-        console.log(state.addingProduct.Name);
-        console.log(state.addingProduct.Price);
-        console.log(state.addingProduct.Type);
-        console.log(state.addingProduct.AmountPrototype[0]);
-        console.log(state.addingProduct.AmountPrototype[1]);
-        console.log(state.addingProduct.AmountPrototype[2]);
-      }
+    reset: (state) => {
+      state.addingProduct = {
+        SKU: "",
+        Name: "",
+        Price: "",
+        Type: "",
+        AmountPrototype: ["", "", ""],
+        Amount: "",
+        Ischecked: false,
+      };
     },
     size2Updater: (state) => {
       console.log("Test 77");
@@ -75,7 +67,7 @@ export const newProductSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-  testPrint,
+  reset,
   size2Updater,
   SKUUpdater,
   nameUpdater,
