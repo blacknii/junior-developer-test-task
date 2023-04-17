@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 function Footer() {
   return (
     <div className={styles.container}>
-      <h3>Scandiweb Test assigment</h3>
+      <h3>Test assigment</h3>
     </div>
   );
 }
